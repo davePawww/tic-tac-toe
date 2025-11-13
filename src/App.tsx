@@ -1,11 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
-import logo from "./assets/logo.svg";
 import Container from "@/components/container";
 import Scoreboard from "@/components/scoreboard";
-import XIcon from "@/components/x-icon";
-import OIcon from "@/components/o-icon";
 import Board from "@/components/board";
-import { Button } from "@/components/ui/button";
+import ActionButtons from "@/components/action-buttons";
+import CurrentTurn from "./components/current-turn";
+import Header from "./components/header";
 
 type Score = {
   X: number;
@@ -50,18 +49,18 @@ export default function App() {
     [board, currentTurn],
   );
 
-  const handleResetScores = () => {
+  const handleResetScores = useCallback(() => {
     setBoard(startingBoard);
     setCurrentTurn("X");
     setScore(initialScore);
     setGameOver(false);
-  };
+  }, []);
 
-  const handleNewGame = () => {
+  const handleNewGame = useCallback(() => {
     setBoard(startingBoard);
     setCurrentTurn("X");
     setGameOver(false);
-  };
+  }, []);
 
   useEffect(() => {
     const checkWinner = () => {
@@ -130,35 +129,18 @@ export default function App() {
   return (
     <>
       <Container>
-        <div className="mb-6 flex flex-col items-center">
-          <div className="mb-2 flex items-center justify-center gap-4">
-            <img src={logo} alt="Logo" className="h-16 w-16" />
-            <h1 className="text-4xl">Tic Tac Toe</h1>
-          </div>
-          <p>First to 3 in a row wins!</p>
-        </div>
+        <Header />
         <Scoreboard score={score} />
-        <div className="mb-6 flex h-16 w-full items-center justify-center rounded-xl border-2 bg-gray-50/50">
-          Current Turn: {currentTurn === "X" ? <XIcon /> : <OIcon />}
-        </div>
-
+        <CurrentTurn currentTurn={currentTurn} />
         <Board
           board={board}
           onSquareClick={handleSquareClick}
           gameOver={gameOver}
         />
-        <div className="flex gap-8">
-          <Button className="w-48" onClick={handleNewGame}>
-            New Game
-          </Button>
-          <Button
-            className="w-48"
-            variant="outline"
-            onClick={handleResetScores}
-          >
-            Reset Scores
-          </Button>
-        </div>
+        <ActionButtons
+          handleNewGame={handleNewGame}
+          handleResetScores={handleResetScores}
+        />
       </Container>
     </>
   );
