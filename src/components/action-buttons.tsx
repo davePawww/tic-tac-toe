@@ -11,10 +11,14 @@ export default function ActionButtons({
 }: ActionButtonsProps) {
   return (
     <div className="flex gap-8">
-      <Button className="w-48" onClick={handleNewGame}>
+      <Button className="w-48 cursor-pointer" onClick={handleNewGame}>
         New Game
       </Button>
-      <Button className="w-48" variant="outline" onClick={handleResetScores}>
+      <Button
+        className="w-48 cursor-pointer"
+        variant="outline"
+        onClick={handleResetScores}
+      >
         Reset Scores
       </Button>
     </div>
