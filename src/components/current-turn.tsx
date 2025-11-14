@@ -7,7 +7,7 @@ type CurrentTurnProps = {
 
 export default function CurrentTurn({ currentTurn }: CurrentTurnProps) {
   return (
-    <div className="mb-6 flex h-16 w-full items-center justify-center rounded-xl border-2 bg-gray-50/50">
+    <div className="mb-6 flex h-12 w-full items-center justify-center rounded-xl border-2 bg-gray-50/50 md:h-16">
       Current Turn: {currentTurn === "X" ? <XIcon /> : <OIcon />}
     </div>
   );

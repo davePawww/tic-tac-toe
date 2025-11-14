@@ -18,7 +18,7 @@ export default function Square({
 }: SquareProps) {
   return (
     <div
-      className={`flex h-30 w-30 items-center justify-center rounded-xl border-2 border-gray-300 ${cell === "X" ? "bg-blue-100" : cell === "O" ? "bg-purple-100" : "bg-white"} ${gameOver ? "pointer-events-none" : "cursor-pointer"} hover:bg-gray-100`}
+      className={`flex h-20 w-20 items-center justify-center rounded-xl border-2 border-gray-300 md:h-30 md:w-30 ${cell === "X" ? "bg-blue-100" : cell === "O" ? "bg-purple-100" : "bg-white"} ${gameOver ? "pointer-events-none" : "cursor-pointer"} hover:bg-gray-100`}
       onClick={() => onClick(rowIndex, cellIndex)}
     >
       {cell === "X" ? <XIcon /> : cell === "O" ? <OIcon /> : null}

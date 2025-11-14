@@ -15,7 +15,7 @@ type ScoreContainerProps = {
 
 export default function Scoreboard({ score }: ScoreProps) {
   return (
-    <div className="mb-6 flex w-full justify-between">
+    <div className="mb-6 flex w-full flex-col gap-2 md:flex-row md:justify-between md:gap-4">
       <ScoreContainer className="border-blue-200">
         Player X: {score.X}
       </ScoreContainer>
@@ -31,7 +31,7 @@ function ScoreContainer({ children, className }: ScoreContainerProps) {
   return (
     <div
       className={cn(
-        "flex h-30 w-46 items-center justify-center rounded-xl border-2 bg-gray-50/50",
+        "flex h-20 w-full items-center justify-center rounded-xl border-2 bg-gray-50/50 md:h-30 md:w-46",
         className,
       )}
     >
